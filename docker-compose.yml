@@ -1,0 +1,106 @@
+# Neon: put credentials in .env (see docker.env.example), then: docker compose up --build
+# Local DB instead: docker compose --profile local-db up --build
+services:
+  ai-service:
+    build: ./ai-service
+    container_name: rental-ai
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      AI_MODEL: ${AI_MODEL:-gpt-4o-mini}
+    ports:
+      - "8001:8000"
+
+  postgres:
+    profiles:
+      - local-db
+    image: postgres:16-alpine
+    container_name: rental-postgres
+    environment:
+      POSTGRES_USER: rental
+      POSTGRES_PASSWORD: rental
+      POSTGRES_DB: rental
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U rental -d rental"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./online-rental-system-licenta
+    container_name: rental-backend
+    ports:
+      - "8081:8081"
+    depends_on:
+      ai-service:
+        condition: service_started
+      postgres:
+        condition: service_healthy
+        required: false
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL:-jdbc:postgresql://postgres:5432/rental?sslmode=disable}
+      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME:-rental}
+      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD:-rental}
+      JWT_SECRET: ${JWT_SECRET:-dev-change-me-in-production-min-32-characters-long!}
+      STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY:-}
+      APP_FRONTEND_ORIGIN: ${APP_FRONTEND_ORIGIN:-http://localhost:3000,http://localhost:3001}
+      APP_PUBLIC_BASE_URL: ${APP_PUBLIC_BASE_URL:-http://localhost:8081}
+      APP_UPLOADS_DIR: /app/uploads
+      APP_EMAIL_CONFIRMATION_REQUIRED: ${APP_EMAIL_CONFIRMATION_REQUIRED:-false}
+      APP_MAIL_FROM: ${APP_MAIL_FROM:-noreply@online-rental.local}
+      SPRING_MAIL_HOST: ${SPRING_MAIL_HOST:-}
+      SPRING_MAIL_PORT: ${SPRING_MAIL_PORT:-587}
+      SPRING_MAIL_USERNAME: ${SPRING_MAIL_USERNAME:-}
+      SPRING_MAIL_PASSWORD: ${SPRING_MAIL_PASSWORD:-}
+      SPRING_MAIL_SMTP_AUTH: ${SPRING_MAIL_SMTP_AUTH:-true}
+      SPRING_MAIL_SMTP_STARTTLS_ENABLE: ${SPRING_MAIL_SMTP_STARTTLS_ENABLE:-true}
+      SPRING_MAIL_SMTP_STARTTLS_REQUIRED: ${SPRING_MAIL_SMTP_STARTTLS_REQUIRED:-true}
+      SPRING_MAIL_SMTP_SSL_TRUST: ${SPRING_MAIL_SMTP_SSL_TRUST:-}
+      SPRING_MAIL_SMTP_SSL_PROTOCOLS: ${SPRING_MAIL_SMTP_SSL_PROTOCOLS:-TLSv1.2}
+      SPRING_MAIL_DEBUG: ${SPRING_MAIL_DEBUG:-false}
+      APP_AI_COMPARE_URL: ${APP_AI_COMPARE_URL:-http://ai-service:8000/v1/rental-compare}
+      APP_AI_CONNECT_TIMEOUT_MS: ${APP_AI_CONNECT_TIMEOUT_MS:-4000}
+      APP_AI_READ_TIMEOUT_MS: ${APP_AI_READ_TIMEOUT_MS:-12000}
+      APP_AI_REVIEW_THRESHOLD: ${APP_AI_REVIEW_THRESHOLD:-0.4}
+      APP_AI_IMAGE_BASE_URL: ${APP_AI_IMAGE_BASE_URL:-http://backend:8081}
+    volumes:
+      - rental_uploads:/app/uploads
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8081/api/v1/products >/dev/null 2>&1 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: /api/v1
+        VITE_STRIPE_PUBLISHABLE_KEY: ${VITE_STRIPE_PUBLISHABLE_KEY:-}
+        VITE_BUILD_ID: ${VITE_BUILD_ID:-docker}
+    container_name: rental-frontend
+    ports:
+      - "3001:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+  ngrok:
+    image: ngrok/ngrok:latest
+    container_name: rental-ngrok
+    command: http backend:8081
+    environment:
+      NGROK_AUTHTOKEN: ${NGROK_AUTHTOKEN:-}
+    ports:
+      - "4040:4040"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  pgdata: {}
+  rental_uploads: {}

@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap');
+
+:root {
+  /*
+   * Brand palette — „Harbor & Sage” (închirieri, încredere, cald)
+   * --c1 Midnight Harbor #1d3557 — acțiuni primare, link-uri, navbar
+   * --c2 Sage Teal       #2a9d8f — succes, confirmare, hover
+   * --c3 Coral Clay      #e76f51 — accent, CTA-uri, badge-uri
+   * --c4 Warm Ochre      #e9c46a — highlight, pending, premium
+   */
+  --c1: #1d3557;
+  --c1-light: #415a77;
+  --c1-pale:  #eef2f7;
+  --c1-glow:  rgba(29, 53, 87, 0.2);
+
+  --c2: #2a9d8f;
+  --c2-light: #3db6a8;
+  --c2-pale:  #e4f7f4;
+  --c2-glow:  rgba(42, 157, 143, 0.2);
+
+  --c3: #e76f51;
+  --c3-light: #f4a261;
+  --c3-pale:  #fff0eb;
+  --c3-glow:  rgba(231, 111, 81, 0.22);
+
+  --c4: #e9c46a;
+  --c4-light: #f1d18a;
+  --c4-pale:  #fdf8ea;
+  --c4-glow:  rgba(233, 196, 106, 0.25);
+
+  /* ─── SEMANTIC ALIASES ─────────────────────────────────────── */
+  --primary:        var(--c1);
+  --primary-hover:  var(--c1-light);
+  --primary-pale:   var(--c1-pale);
+  --primary-glow:   var(--c1-glow);
+
+  --success:        var(--c2);
+  --success-hover:  var(--c2-light);
+  --success-pale:   var(--c2-pale);
+
+  --accent:         var(--c3);
+  --accent-hover:   var(--c3-light);
+  --accent-pale:    var(--c3-pale);
+  --accent-glow:    var(--c3-glow);
+
+  --gold:           var(--c4);
+  --gold-hover:     var(--c4-light);
+  --gold-pale:      var(--c4-pale);
+
+  --error:          #b83232;
+  --error-pale:     #fdeaea;
+  --warning:        var(--c4);
+  --warning-pale:   var(--c4-pale);
+  --info:           var(--c1);
+  --info-pale:      var(--c1-pale);
+
+  /* ─── NEUTRALS ─────────────────────────────────────────────── */
+  --gray-50:  #f9fafb;
+  --gray-100: #f1f3f5;
+  --gray-150: #e8eaec;
+  --gray-200: #dde0e4;
+  --gray-300: #c1c6cc;
+  --gray-400: #9ba2ab;
+  --gray-500: #6e7580;
+  --gray-600: #4e5560;
+  --gray-700: #343b47;
+  --gray-800: #1e2530;
+  --gray-900: #0f1318;
+
+  /* ─── BACKGROUNDS ──────────────────────────────────────────── */
+  --bg-canvas:   #f3f6f8;
+  --bg-primary:  #ffffff;
+  --bg-secondary: var(--gray-50);
+  --bg-tertiary:  var(--gray-100);
+  --bg-overlay:  rgba(15, 19, 24, 0.55);
+
+  /* ─── TEXT ─────────────────────────────────────────────────── */
+  --text-primary:   #0f1318;
+  --text-secondary: var(--gray-600);
+  --text-tertiary:  var(--gray-400);
+  --text-inverse:   #ffffff;
+  --text-link:      var(--c1);
+
+  /* ─── BORDERS ──────────────────────────────────────────────── */
+  --border-subtle:  rgba(15, 19, 24, 0.07);
+  --border-default: rgba(15, 19, 24, 0.12);
+  --border-strong:  rgba(15, 19, 24, 0.22);
+  --border-focus:   var(--c1);
+
+  /* ─── TYPOGRAPHY ───────────────────────────────────────────── */
+  --font-sans:    'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
+
+  --text-xs:   0.6875rem;   /* 11px */
+  --text-sm:   0.8125rem;   /* 13px */
+  --text-base: 0.9375rem;   /* 15px */
+  --text-md:   1.0625rem;   /* 17px */
+  --text-lg:   1.1875rem;   /* 19px */
+  --text-xl:   1.375rem;    /* 22px */
+  --text-2xl:  1.625rem;    /* 26px */
+  --text-3xl:  2rem;        /* 32px */
+  --text-4xl:  2.5rem;      /* 40px */
+  --text-5xl:  3.25rem;     /* 52px */
+
+  --leading-tight:  1.2;
+  --leading-snug:   1.4;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.75;
+  --tracking-tight: -0.025em;
+  --tracking-wide:  0.06em;
+
+  /* ─── SPACING ──────────────────────────────────────────────── */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.25rem;
+  --sp-6: 1.5rem;
+  --sp-8: 2rem;
+  --sp-10: 2.5rem;
+  --sp-12: 3rem;
+  --sp-16: 4rem;
+  --sp-20: 5rem;
+
+  /* ─── BORDER RADII ─────────────────────────────────────────── */
+  --r-sm:   4px;
+  --r-md:   8px;
+  --r-lg:   12px;
+  --r-xl:   16px;
+  --r-2xl:  24px;
+  --r-full: 9999px;
+
+  /* ─── SHADOWS & DEPTH ─────────────────────────────────────── */
+  --shadow-xs:
+    0 1px 2px rgba(15, 19, 24, 0.05);
+
+  --shadow-sm:
+    0 1px 3px rgba(15, 19, 24, 0.06),
+    0 1px 2px rgba(15, 19, 24, 0.04);
+
+  --shadow-md:
+    0 4px 8px rgba(15, 19, 24, 0.07),
+    0 2px 4px rgba(15, 19, 24, 0.05),
+    0 0 0 1px rgba(15, 19, 24, 0.04);
+
+  --shadow-lg:
+    0 12px 24px rgba(15, 19, 24, 0.09),
+    0 4px 8px  rgba(15, 19, 24, 0.06),
+    0 0 0 1px  rgba(15, 19, 24, 0.04);
+
+  --shadow-xl:
+    0 24px 48px rgba(15, 19, 24, 0.12),
+    0 8px  16px rgba(15, 19, 24, 0.08),
+    0 0 0 1px   rgba(15, 19, 24, 0.04);
+
+  --shadow-2xl:
+    0 40px 80px rgba(15, 19, 24, 0.15),
+    0 16px 32px rgba(15, 19, 24, 0.1);
+
+  /* Colored glow shadows */
+  --shadow-primary:
+    0 4px 14px var(--c1-glow),
+    0 2px 4px  rgba(29, 53, 87, 0.12);
+
+  --shadow-primary-lg:
+    0 8px 28px  rgba(29, 53, 87, 0.26),
+    0 4px 10px  rgba(29, 53, 87, 0.16),
+    0 0 0 1px   rgba(29, 53, 87, 0.08);
+
+  --shadow-accent:
+    0 4px 14px var(--c3-glow),
+    0 2px 4px  rgba(231, 111, 81, 0.14);
+
+  --shadow-success:
+    0 4px 14px var(--c2-glow),
+    0 2px 4px  rgba(42, 157, 143, 0.14);
+
+  /* ─── TRANSITIONS ──────────────────────────────────────────── */
+  --ease-out:     cubic-bezier(0.0, 0.0, 0.2, 1);
+  --ease-in-out:  cubic-bezier(0.4, 0.0, 0.2, 1);
+  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth:  cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  --dur-fast:    120ms;
+  --dur-base:    200ms;
+  --dur-slow:    350ms;
+  --dur-slower:  550ms;
+
+  --transition-base:
+    color var(--dur-base) var(--ease-out),
+    background-color var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+
+  --transition-transform:
+    transform var(--dur-base) var(--ease-spring);
+
+  --transition-all:
+    all var(--dur-base) var(--ease-in-out);
+
+  /* ─── Z-INDEX ──────────────────────────────────────────────── */
+  --z-base:     0;
+  --z-raised:   10;
+  --z-dropdown: 200;
+  --z-sticky:   300;
+  --z-overlay:  400;
+  --z-modal:    500;
+  --z-toast:    600;
+
+  /* ─── Legacy aliases (pages/components written for the older token set) ─ */
+  --font-family: var(--font-sans);
+  --primary-dark: var(--c1-light);
+  --primary-light: var(--c1-light);
+  --secondary: var(--c2);
+
+  --font-size-xs: var(--text-xs);
+  --font-size-sm: var(--text-sm);
+  --font-size-base: var(--text-base);
+  --font-size-lg: var(--text-lg);
+  --font-size-xl: var(--text-xl);
+  --font-size-2xl: var(--text-2xl);
+  --font-size-3xl: var(--text-3xl);
+  --font-size-4xl: var(--text-4xl);
+
+  --spacing-xs: var(--sp-1);
+  --spacing-sm: var(--sp-2);
+  --spacing-md: var(--sp-4);
+  --spacing-lg: var(--sp-6);
+  --spacing-xl: var(--sp-8);
+  --spacing-2xl: var(--sp-12);
+  --spacing-3xl: var(--sp-16);
+
+  --border-radius: var(--r-lg);
+  --border-radius-sm: var(--r-md);
+  --border-radius-lg: var(--r-xl);
+
+  --border-color: var(--border-default);
+  --success-light: var(--c2-pale);
+  --error-light: var(--error-pale);
+  --warning-light: var(--c4-pale);
+  --info-light: var(--c1-pale);
+
+  --gradient-heading: linear-gradient(135deg, var(--c1) 0%, var(--c2) 45%, var(--c3) 100%);
+  --gradient-page-bg: linear-gradient(180deg, var(--gray-50) 0%, var(--bg-primary) 45%, var(--c1-pale) 100%);
+  --border-glass: rgba(29, 53, 87, 0.14);
+  --border-glass-subtle: rgba(29, 53, 87, 0.1);
+  --overlay-blob-primary: rgba(29, 53, 87, 0.06);
+  --overlay-blob-secondary: rgba(42, 157, 143, 0.06);
+  --overlay-blob-primary-strong: rgba(29, 53, 87, 0.08);
+  --overlay-blob-secondary-strong: rgba(42, 157, 143, 0.08);
+  --overlay-blob-accent-strong: rgba(231, 111, 81, 0.08);
+  --surface-glass: rgba(255, 255, 255, 0.96);
+  --surface-glass-strong: rgba(255, 255, 255, 0.99);
+  --focus-ring-primary: rgba(29, 53, 87, 0.16);
+
+  --transition-fast: var(--dur-fast) var(--ease-out);
+}

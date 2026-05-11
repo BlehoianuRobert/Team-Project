@@ -1,0 +1,195 @@
+.return-photos-page {
+  min-height: calc(100vh - var(--header-stack-h, 112px));
+  padding: var(--sp-8) 0 var(--sp-16);
+}
+
+.return-photos-container {
+  max-width: 980px;
+}
+
+.return-photos-header {
+  margin-bottom: var(--sp-6);
+}
+
+.return-photos-header h1 {
+  margin-bottom: var(--sp-2);
+}
+
+.header-stepper {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  overflow-x: auto;
+  padding-bottom: var(--sp-1);
+  margin-top: var(--sp-4);
+}
+
+.header-step {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  flex: 0 0 auto;
+  padding: var(--sp-1) var(--sp-2);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-full);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+}
+
+.step-index {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  border: 1px solid var(--border-default);
+  background: var(--bg-primary);
+}
+
+.step-label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.header-step.is-active {
+  border-color: var(--c1);
+  background: color-mix(in srgb, var(--c1) 12%, white);
+  color: var(--c1);
+}
+
+.header-step.is-active .step-index {
+  border-color: var(--c1);
+  background: var(--c1);
+  color: #fff;
+}
+
+.header-step.is-done {
+  border-color: #16a34a;
+  background: color-mix(in srgb, #16a34a 12%, white);
+  color: #15803d;
+}
+
+.header-step.is-done .step-index {
+  border-color: #16a34a;
+  background: #16a34a;
+  color: #fff;
+}
+
+.return-photos-actions {
+  display: flex;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+  margin-top: var(--sp-4);
+}
+
+.return-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-xl);
+  padding: var(--sp-6);
+  box-shadow: var(--shadow-sm);
+}
+
+.return-card-sub {
+  margin: var(--sp-2) 0 var(--sp-5);
+  color: var(--text-secondary);
+}
+
+/* Pași wizard (predare) — spațiere explicită (fără a depinde de whitespace în JSX) */
+.wizard-steps {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-5);
+  padding-bottom: var(--sp-4);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.wizard-step {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: var(--r-full);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-secondary);
+}
+
+.wizard-step.is-active {
+  border-color: var(--c1);
+  background: color-mix(in srgb, var(--c1) 12%, white);
+  color: var(--c1);
+}
+
+.upload-zone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed var(--border-default);
+  border-radius: var(--r-xl);
+  background: var(--bg-secondary);
+  padding: var(--sp-5);
+  cursor: pointer;
+  margin-bottom: var(--sp-5);
+}
+
+.upload-zone input {
+  display: none;
+}
+
+.upload-zone span {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.submit-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--sp-5);
+}
+
+.pending-tag {
+  font-size: var(--text-sm);
+  color: var(--c1);
+  background: var(--c1-pale);
+  border-radius: var(--r-full);
+  padding: var(--sp-1) var(--sp-3);
+}
+
+.verification-panel {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-lg);
+  padding: var(--sp-4);
+  background: var(--bg-secondary);
+  margin-bottom: var(--sp-5);
+}
+
+.images-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--sp-3);
+}
+
+.img-tile {
+  display: block;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-tertiary);
+  aspect-ratio: 1 / 1;
+}
+
+.img-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
