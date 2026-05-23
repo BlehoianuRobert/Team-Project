@@ -1,4 +1,4 @@
-"""Vision API: rental handover vs return comparison and listing photo vs claimed product text."""
+"""Vision API + Chat: rental handover vs return comparison and support chatbot."""
 
 from __future__ import annotations
 
@@ -17,8 +17,10 @@ logger = logging.getLogger(__name__)
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "").strip()
 AI_MODEL = os.getenv("AI_MODEL", "gpt-4o-mini")
+CHAT_MODEL = os.getenv("CHAT_MODEL", "gpt-4o-mini")
 MAX_IMAGES_PER_GROUP = int(os.getenv("MAX_IMAGES_PER_GROUP", "6"))
 REQUEST_TIMEOUT_S = float(os.getenv("REQUEST_TIMEOUT_S", "120"))
+CHAT_MAX_HISTORY = int(os.getenv("CHAT_MAX_HISTORY", "20"))
 
 app = FastAPI(title="Rental vision AI", version="1.0.0")
 
@@ -28,6 +30,17 @@ class RentalCompareBody(BaseModel):
     baselineImageUrls: list[str] = Field(default_factory=list)
     returnImageUrls: list[str] = Field(default_factory=list)
     rentedProductContext: str = ""
+
+
+class ChatMessage(BaseModel):
+    role: str = "user"
+    content: str
+
+
+class ChatBody(BaseModel):
+    message: str
+    history: list[ChatMessage] = Field(default_factory=list)
+    userContext: str = ""
 
 
 def _parse_json_object(text: str) -> dict[str, Any]:
@@ -231,3 +244,90 @@ async def legacy_analyze_placeholder():
         "Use POST /v1/rental-compare with JSON body (baselineImageUrls + returnImageUrls). "
         "Set APP_AI_COMPARE_URL to that path.",
     )
+
+
+# ---------------------------------------------------------------------------
+# Chat endpoint
+# ---------------------------------------------------------------------------
+
+CHAT_SYSTEM = """Ești asistentul virtual al platformei de închiriere online „Online Rental System".
+Răspunzi DOAR în limba română. Fii prietenos, concis și ușor de citit.
+
+REGULI DE FORMATARE (OBLIGATORII):
+- Folosește propoziții scurte, nu paragrafe lungi.
+- Traduce ÎNTOTDEAUNA statusurile în română: PENDING=În așteptare, CONFIRMED=Confirmată, ACTIVE=Activă, RETURNED=Returnată, COMPLETED=Finalizată, CANCELED=Anulată, OVERDUE=Întârziată.
+- Traduce tipul de livrare: PERSONAL_PICKUP=Ridicare personală, DELIVERY=Livrare curier.
+- Folosește emoji-uri moderate pentru a face textul mai vizual (✅, 📦, ⏳, ⚠️, 📷, 💳).
+- FOARTE IMPORTANT: dacă sunt mai mult de 5 închirieri, NU le lista pe toate! În schimb:
+  1. Dă un rezumat general (ex: "Ai 16 închirieri active: 3 cu întârziere, 10 confirmate, 3 în așteptare.")
+  2. Evidențiază DOAR cele care necesită atenție (întârziate, aproape de termen).
+  3. Menționează pe scurt restul grupat (ex: "Restul de 10 sunt confirmate și în termen.")
+- Dacă sunt sub 5, le poți lista individual dar concis.
+- NU lista toate câmpurile brut. Fii selectiv și relevant.
+- Răspunsul NU trebuie să depășească 150 de cuvinte.
+
+Platforma permite utilizatorilor să:
+- Navigheze un catalog de produse (electronice, gadgeturi) și să le închirieze pe perioade determinate.
+- Plătească online prin Stripe (card bancar).
+- Aleagă livrare prin curier sau ridicare personală.
+- La retur, să încarce fotografii; un sistem AI compară pozele cu cele originale pentru a detecta daune.
+- Lase recenzii și rating-uri produselor.
+
+Statusurile unei închirieri sunt: PENDING → CONFIRMED → ACTIVE → RETURNED → COMPLETED (sau CANCELED / OVERDUE).
+
+Când primești context despre utilizator (închirieri active, produse etc.), folosește-l pentru a răspunde personalizat.
+Dacă nu știi răspunsul sau întrebarea nu e legată de platformă, spune politicos că nu poți ajuta cu acel subiect.
+Nu inventa informații pe care nu le ai în context.
+Nu dezvălui detalii tehnice interne (endpoint-uri, structuri de baze de date etc.)."""
+
+
+async def _openai_chat(system: str, messages: list[dict[str, str]]) -> str:
+    if not OPENAI_API_KEY:
+        return "Chatbot-ul nu este configurat momentan. Vă rugăm să contactați suportul."
+
+    payload = {
+        "model": CHAT_MODEL,
+        "messages": [{"role": "system", "content": system}] + messages,
+        "max_tokens": 1000,
+        "temperature": 0.7,
+    }
+    async with httpx.AsyncClient(timeout=REQUEST_TIMEOUT_S) as client:
+        r = await client.post(
+            "https://api.openai.com/v1/chat/completions",
+            headers={
+                "Authorization": f"Bearer {OPENAI_API_KEY}",
+                "Content-Type": "application/json",
+            },
+            json=payload,
+        )
+        if r.status_code >= 400:
+            logger.error("OpenAI chat error: %s", r.text[:500])
+            raise HTTPException(status_code=502, detail="Serviciul AI nu este disponibil momentan.")
+        data = r.json()
+    return data["choices"][0]["message"]["content"]
+
+
+@app.post("/v1/chat")
+async def chat(body: ChatBody):
+    if not body.message or not body.message.strip():
+        raise HTTPException(400, "Mesajul nu poate fi gol.")
+
+    system = CHAT_SYSTEM
+    if body.userContext and body.userContext.strip():
+        system += "\n\nContext utilizator curent:\n" + body.userContext.strip()
+
+    messages: list[dict[str, str]] = []
+    for msg in body.history[-CHAT_MAX_HISTORY:]:
+        if msg.role in ("user", "assistant"):
+            messages.append({"role": msg.role, "content": msg.content})
+    messages.append({"role": "user", "content": body.message.strip()})
+
+    try:
+        reply = await _openai_chat(system, messages)
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.exception("chat failed")
+        raise HTTPException(500, "Eroare internă la procesarea mesajului.") from e
+
+    return {"reply": reply}

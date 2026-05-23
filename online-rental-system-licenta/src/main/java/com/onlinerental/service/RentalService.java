@@ -343,7 +343,12 @@ public class RentalService {
                 .toList();
 
         if (baselineUrls.isEmpty()) {
-            throw new IllegalArgumentException("Nu există poze de predare pentru comparație.");
+            String productImageUrl = rental.getInventory().getProduct().getImageUrl();
+            if (productImageUrl != null && !productImageUrl.isBlank()) {
+                baselineUrls = List.of(productImageUrl);
+            } else {
+                throw new IllegalArgumentException("Nu există poze de predare și nici poză de catalog pentru comparație.");
+            }
         }
         if (returnUrls.size() < MIN_RETURN_PHOTOS) {
             throw new IllegalArgumentException("Nu există suficiente poze de retur pentru comparație.");
@@ -395,10 +400,11 @@ public class RentalService {
                 .orElseThrow(() -> new IllegalArgumentException("Închiriere inexistentă"));
         ensureCanAccessRental(rental, actor);
 
-        List<String> baselineUrls = baselineImageRepository.findByRentalIdOrderByCreatedAtDesc(rentalId)
-                .stream()
-                .map(RentalBaselineImage::getImageUrl)
-                .toList();
+        String productImageUrl = rental.getInventory().getProduct().getImageUrl();
+        List<String> baselineUrls = (productImageUrl != null && !productImageUrl.isBlank())
+                ? List.of(productImageUrl)
+                : List.of();
+
         List<String> targetUrls = (stage == HandoverStage.BASELINE
                 ? baselineImageRepository.findByRentalIdOrderByCreatedAtDesc(rentalId).stream().map(RentalBaselineImage::getImageUrl).toList()
                 : returnImageRepository.findByRentalIdOrderByCreatedAtDesc(rentalId).stream().map(RentalReturnImage::getImageUrl).toList());
@@ -406,8 +412,14 @@ public class RentalService {
         if (targetUrls.isEmpty()) {
             throw new IllegalArgumentException("Nu există poze pentru etapa " + stage.name() + ".");
         }
+        if (stage == HandoverStage.BASELINE && baselineUrls.isEmpty()) {
+            throw new IllegalArgumentException("Produsul nu are poze în catalog pentru verificarea AI.");
+        }
         markStageSessionStarted(rental, stage, actor);
-        AiComparisonService.AiCompareResult result = aiComparisonService.compare(rentalId, baselineUrls, targetUrls);
+        String productContext = rental.getInventory().getProduct().getName()
+                + " " + (rental.getInventory().getProduct().getBrand() != null ? rental.getInventory().getProduct().getBrand() : "")
+                + " " + (rental.getInventory().getProduct().getCategory() != null ? rental.getInventory().getProduct().getCategory() : "");
+        AiComparisonService.AiCompareResult result = aiComparisonService.compare(rentalId, baselineUrls, targetUrls, productContext.trim());
         photoVerificationRepository.save(Objects.requireNonNull(RentalPhotoVerification.builder()
                 .rental(rental)
                 .stage(stage)
@@ -422,7 +434,7 @@ public class RentalService {
                 .detectedBrand(result.detectedBrand())
                 .detectedModel(result.detectedModel())
                 .serialNumberDetected(result.serialNumberDetected())
-                .verdict(resolveVerdict(result))
+                .verdict(resolveVerdict(result, stage == HandoverStage.BASELINE))
                 .needsReview(result.needsReview())
                 .message(result.message())
                 .rawResponse(result.rawResponse())
@@ -568,10 +580,15 @@ public class RentalService {
     }
 
     private VerificationVerdict resolveVerdict(AiComparisonService.AiCompareResult result) {
+        return resolveVerdict(result, false);
+    }
+
+    private VerificationVerdict resolveVerdict(AiComparisonService.AiCompareResult result, boolean strictBaseline) {
         if ("FAILED".equalsIgnoreCase(result.status())) {
             return VerificationVerdict.FAILED;
         }
-        if (result.modelMatchScore() != null && result.modelMatchScore().compareTo(BigDecimal.valueOf(0.55)) < 0) {
+        double mismatchThreshold = strictBaseline ? 0.75 : 0.55;
+        if (result.modelMatchScore() != null && result.modelMatchScore().compareTo(BigDecimal.valueOf(mismatchThreshold)) < 0) {
             return VerificationVerdict.MISMATCH;
         }
         return result.needsReview() ? VerificationVerdict.REVIEW_REQUIRED : VerificationVerdict.MATCH;

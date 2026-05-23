@@ -57,6 +57,7 @@ app:
     secret-key: ${STRIPE_SECRET_KEY:}
   ai:
     compare-url: ${APP_AI_COMPARE_URL:}
+    chat-url: ${APP_AI_CHAT_URL:}
     image-base-url: ${APP_AI_IMAGE_BASE_URL:}
     connect-timeout-ms: ${APP_AI_CONNECT_TIMEOUT_MS:4000}
     read-timeout-ms: ${APP_AI_READ_TIMEOUT_MS:12000}

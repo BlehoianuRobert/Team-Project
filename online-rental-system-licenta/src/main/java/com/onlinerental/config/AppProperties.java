@@ -43,6 +43,7 @@ public class AppProperties {
     @Setter
     public static class Ai {
         private String compareUrl = "";
+        private String chatUrl = "";
         private String imageBaseUrl = "";
         private int connectTimeoutMs = 4000;
         private int readTimeoutMs = 12000;

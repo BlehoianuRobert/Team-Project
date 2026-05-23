@@ -24,6 +24,7 @@ import SuperOwnerStatisticsPage from './pages/SuperOwnerStatisticsPage';
 import AccountPage from './pages/AccountPage';
 import RentalBaselinePhotosPage from './pages/RentalBaselinePhotosPage';
 import RentalReturnPhotosPage from './pages/RentalReturnPhotosPage';
+import ChatWidget from './components/common/ChatWidget';
 
 import './App.css';
 
@@ -141,6 +142,7 @@ function App() {
             <Route path="*" element={<Navigate to={ROUTES.PRODUCTS} replace />} />
           </Routes>
         </Layout>
+        <ChatWidget />
       </Router>
     </AuthProvider>
   );

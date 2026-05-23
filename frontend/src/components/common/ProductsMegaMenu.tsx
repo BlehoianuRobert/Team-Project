@@ -263,12 +263,14 @@ const ProductsMegaMenu: React.FC = () => {
         <div
           id="products-mega-panel"
           className="products-mega-panel"
-          onMouseEnter={onEnterZone}
-          onMouseLeave={onLeaveZone}
           role="region"
           aria-label="Filtre catalog"
         >
-          <div className="products-mega-panel-inner">
+          <div
+            className="products-mega-panel-inner"
+            onMouseEnter={onEnterZone}
+            onMouseLeave={onLeaveZone}
+          >
             {loading ? (
               <div className="products-mega-loading">Se încarcă filtrele…</div>
             ) : (
