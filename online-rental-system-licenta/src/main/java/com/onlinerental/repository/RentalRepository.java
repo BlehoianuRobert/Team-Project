@@ -68,4 +68,6 @@ public interface RentalRepository extends JpaRepository<Rental, Long> {
             @Param("rangeStart") LocalDate rangeStart,
             @Param("rangeEnd") LocalDate rangeEnd,
             @Param("blockingStatuses") Collection<RentalStatus> blockingStatuses);
+
+    List<Rental> findByStatusAndEndDateBefore(RentalStatus status, LocalDate date);
 }
