@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { ROUTES } from '../utils/constants';
 import './LoginPage.css';
+import Logo from '../components/common/Logo';
 
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -43,7 +44,7 @@ const LoginPage: React.FC = () => {
       <div className="login-container">
         <div className="auth-header">
           <div className="auth-logo" aria-hidden>
-            <img src="/logo-stacked.svg" alt="Online Rental System" className="auth-logo-img" draggable={false} />
+            <Logo variant="stacked" />
           </div>
           <p className="auth-kicker">Bine ai revenit</p>
           <h2>Autentificare</h2>

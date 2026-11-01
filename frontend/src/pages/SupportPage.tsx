@@ -49,7 +49,7 @@ const SupportPage: React.FC = () => {
           </div>
 
           <div className="contact-card">
-            <div className="contact-card-icon" style={{ background: 'var(--c4-pale)', color: '#9a6e00' }}>
+            <div className="contact-card-icon" style={{ background: 'var(--c4-pale)', color: '#8a5a00' }}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="10"/>
                 <polyline points="12 6 12 12 16 14"/>

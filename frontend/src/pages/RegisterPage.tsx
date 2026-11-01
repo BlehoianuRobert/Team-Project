@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { ROUTES } from '../utils/constants';
 import './RegisterPage.css';
+import Logo from '../components/common/Logo';
 
 const RegisterPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -65,7 +66,7 @@ const RegisterPage: React.FC = () => {
       <div className="register-container">
         <div className="auth-header">
           <div className="auth-logo" aria-hidden>
-            <img src="/logo-stacked.svg" alt="Online Rental System" className="auth-logo-img" draggable={false} />
+            <Logo variant="stacked" />
           </div>
           <p className="auth-kicker">Cont nou</p>
           <h2>Înregistrare</h2>

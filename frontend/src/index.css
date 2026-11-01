@@ -32,6 +32,6 @@ body {
 }
 
 ::selection {
-  background: rgba(29, 53, 87, 0.14);
+  background: rgba(11, 31, 51, 0.14);
   color: var(--c1);
 }

@@ -176,8 +176,8 @@
 
 .filter-input:focus,
 .filter-select:focus {
-  border-color: rgba(29, 53, 87, 0.7);
-  box-shadow: 0 0 0 3px rgba(29, 53, 87, 0.15);
+  border-color: rgba(11, 31, 51, 0.7);
+  box-shadow: 0 0 0 3px rgba(11, 31, 51, 0.15);
 }
 
 .price-inputs {
@@ -235,10 +235,10 @@
 }
 
 .filter-option:hover {
-  background: linear-gradient(90deg, rgba(29, 53, 87, 0.1) 0%, rgba(42, 157, 143, 0.1) 100%);
-  border-color: rgba(29, 53, 87, 0.3);
+  background: linear-gradient(90deg, rgba(11, 31, 51, 0.1) 0%, rgba(18, 128, 92, 0.1) 100%);
+  border-color: rgba(11, 31, 51, 0.3);
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 4px 8px rgba(29, 53, 87, 0.15);
+  box-shadow: 0 4px 8px rgba(11, 31, 51, 0.15);
 }
 
 .filter-option:hover::before {
@@ -251,8 +251,8 @@
 }
 
 .filter-option:has(input[type="checkbox"]:checked) {
-  background: linear-gradient(90deg, rgba(29, 53, 87, 0.1) 0%, rgba(42, 157, 143, 0.1) 100%);
-  border-color: rgba(29, 53, 87, 0.3);
+  background: linear-gradient(90deg, rgba(11, 31, 51, 0.1) 0%, rgba(18, 128, 92, 0.1) 100%);
+  border-color: rgba(11, 31, 51, 0.3);
 }
 
 .filter-option:has(input[type="checkbox"]:checked)::before {

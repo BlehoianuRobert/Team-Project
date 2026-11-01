@@ -21,7 +21,7 @@
   bottom: 0; left: 50%;
   transform: translateX(-50%);
   width: 52px; height: 3px;
-  background: linear-gradient(90deg, var(--c1) 0%, var(--c2) 100%);
+  background: var(--c1);
   border-radius: var(--r-full);
 }
 
@@ -96,7 +96,7 @@
 .smart-filter-bar input:focus {
   border-color: var(--c1);
   background: var(--bg-primary);
-  box-shadow: 0 0 0 3px rgba(29, 53, 87, 0.1);
+  box-shadow: 0 0 0 3px rgba(11, 31, 51, 0.1);
 }
 
 .smart-filter-bar .btn {
@@ -163,7 +163,7 @@
 .product-card.product-card--catalog:hover {
   box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
   transform: translateY(-4px);
-  border-color: rgba(29, 53, 87, 0.12);
+  border-color: rgba(11, 31, 51, 0.12);
 }
 
 /* Top visual (gradient or photo) */
@@ -179,16 +179,16 @@
 }
 
 .product-card-visual--teal {
-  background: linear-gradient(145deg, #0d4f52 0%, #1a7a7e 45%, #2a9d8f 100%);
+  background: #e3f4ec;
 }
 .product-card-visual--terra {
-  background: linear-gradient(145deg, #6b2d1a 0%, #c45c26 50%, #e07a3a 100%);
+  background: #fef4e2;
 }
 .product-card-visual--olive {
-  background: linear-gradient(145deg, #3d4a1f 0%, #6b7c3d 48%, #8a9a5c 100%);
+  background: #e6eefc;
 }
 .product-card-visual--navy {
-  background: linear-gradient(145deg, #0a1628 0%, #1d3557 55%, #2a4a7c 100%);
+  background: #eef2f8;
 }
 
 .product-card-visual img {
@@ -199,7 +199,7 @@
 }
 
 .product-card-visual--has-image {
-  background: #0f172a;
+  background: #0b1f33;
 }
 
 .product-card-visual-fallback {
@@ -241,7 +241,7 @@
 
 .product-pill-category {
   background: #dbeafe;
-  color: #1e3a5f;
+  color: #0b1f33;
   text-transform: capitalize;
 }
 
@@ -352,7 +352,7 @@
   position: absolute;
   inset: 0 0 auto 0;
   height: 0;
-  background: linear-gradient(90deg, var(--c1) 0%, var(--c2) 50%, var(--c3) 100%);
+  background: var(--c1);
   transition: height var(--dur-base) var(--ease-out);
   z-index: 1;
 }
@@ -360,7 +360,7 @@
 .product-card:not(.product-card--catalog):hover {
   box-shadow: var(--shadow-lg);
   transform: translateY(-5px);
-  border-color: rgba(29, 53, 87, 0.12);
+  border-color: rgba(11, 31, 51, 0.12);
 }
 
 .product-card:not(.product-card--catalog):hover::before {

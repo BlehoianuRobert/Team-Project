@@ -40,7 +40,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--c1) 0%, var(--c2) 100%);
+  background: var(--c1);
   border-radius: var(--r-2xl) var(--r-2xl) 0 0;
 }
 
@@ -133,7 +133,7 @@
 .form-group select:focus,
 .form-input:focus {
   border-color: var(--c1);
-  box-shadow: 0 0 0 3px rgba(29, 53, 87, 0.1);
+  box-shadow: 0 0 0 3px rgba(11, 31, 51, 0.1);
 }
 
 .form-textarea {
@@ -239,7 +239,7 @@
 }
 
 .autocomplete-option:active {
-  background: rgba(29, 53, 87, 0.15);
+  background: rgba(11, 31, 51, 0.15);
 }
 
 /* Scrollbar */

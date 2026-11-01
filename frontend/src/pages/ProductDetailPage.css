@@ -9,8 +9,8 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 20% 30%, rgba(29, 53, 87, 0.06) 0%, transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(42, 157, 143, 0.06) 0%, transparent 40%);
+    radial-gradient(circle at 20% 30%, rgba(11, 31, 51, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(18, 128, 92, 0.06) 0%, transparent 40%);
   z-index: 0;
   pointer-events: none;
 }
@@ -75,7 +75,7 @@
 }
 
 .product-gallery-thumb.active {
-  border-color: var(--accent-primary, #1d3557);
+  border-color: var(--accent-primary, #1d5bd8);
 }
 
 .product-gallery-thumb img {
@@ -222,7 +222,7 @@
 
 .review-form textarea:focus {
   border-color: var(--c1);
-  box-shadow: 0 0 0 3px rgba(29, 53, 87, 0.1);
+  box-shadow: 0 0 0 3px rgba(11, 31, 51, 0.1);
 }
 
 .rating-input {

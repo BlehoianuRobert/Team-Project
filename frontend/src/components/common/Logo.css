@@ -1,0 +1,42 @@
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1;
+  user-select: none;
+}
+
+.brand-logo svg {
+  flex-shrink: 0;
+  display: block;
+}
+
+.brand-logo-word {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 1.375rem;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.brand-logo-word-accent {
+  color: var(--c1);
+}
+
+.brand-logo--stacked {
+  flex-direction: column;
+  gap: 14px;
+}
+
+.brand-logo--stacked .brand-logo-word {
+  font-size: 2rem;
+}
+
+.brand-logo--dark .brand-logo-word {
+  color: #ffffff;
+}
+
+.brand-logo--dark .brand-logo-word-accent {
+  color: #8db3ff;
+}

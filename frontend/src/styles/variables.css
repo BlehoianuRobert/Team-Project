@@ -1,32 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
 
 :root {
   /*
-   * Brand palette — „Harbor & Sage” (închirieri, încredere, cald)
-   * --c1 Midnight Harbor #1d3557 — acțiuni primare, link-uri, navbar
-   * --c2 Sage Teal       #2a9d8f — succes, confirmare, hover
-   * --c3 Coral Clay      #e76f51 — accent, CTA-uri, badge-uri
-   * --c4 Warm Ochre      #e9c46a — highlight, pending, premium
+   * Brand palette — „Fjord” (calm, curat, de încredere)
+   * --ink   Ink        #0b1f33 — text, titluri, suprafețe închise
+   * --c1    Fjord Blue #1d5bd8 — acțiuni primare, link-uri, focus
+   * --c2    Pine       #12805c — succes, disponibil, confirmare
+   * --c3    Amber Deep #b45309 — accent pentru text / butoane cu text alb
+   * --c4    Gold Text  #8a5a00 — pending, premium (text pe fundal pal)
+   * --amber Amber      #f5a524 — evidențieri, insigne, pași (cu text --ink)
    */
-  --c1: #1d3557;
-  --c1-light: #415a77;
-  --c1-pale:  #eef2f7;
-  --c1-glow:  rgba(29, 53, 87, 0.2);
+  --ink:       #0b1f33;
+  --ink-soft:  #16304b;
+  --amber:     #f5a524;
+  --amber-pale: #fef4e2;
 
-  --c2: #2a9d8f;
-  --c2-light: #3db6a8;
-  --c2-pale:  #e4f7f4;
-  --c2-glow:  rgba(42, 157, 143, 0.2);
+  --c1: #1d5bd8;
+  --c1-light: #174bb5;
+  --c1-pale:  #e6eefc;
+  --c1-glow:  rgba(29, 91, 216, 0.2);
 
-  --c3: #e76f51;
-  --c3-light: #f4a261;
-  --c3-pale:  #fff0eb;
-  --c3-glow:  rgba(231, 111, 81, 0.22);
+  --c2: #12805c;
+  --c2-light: #0e6b4c;
+  --c2-pale:  #e3f4ec;
+  --c2-glow:  rgba(18, 128, 92, 0.2);
 
-  --c4: #e9c46a;
-  --c4-light: #f1d18a;
-  --c4-pale:  #fdf8ea;
-  --c4-glow:  rgba(233, 196, 106, 0.25);
+  --c3: #b45309;
+  --c3-light: #92400e;
+  --c3-pale:  #fef4e2;
+  --c3-glow:  rgba(180, 83, 9, 0.2);
+
+  --c4: #8a5a00;
+  --c4-light: #f5a524;
+  --c4-pale:  #fef4e2;
+  --c4-glow:  rgba(245, 165, 36, 0.28);
 
   /* ─── SEMANTIC ALIASES ─────────────────────────────────────── */
   --primary:        var(--c1);
@@ -55,41 +62,41 @@
   --info-pale:      var(--c1-pale);
 
   /* ─── NEUTRALS ─────────────────────────────────────────────── */
-  --gray-50:  #f9fafb;
-  --gray-100: #f1f3f5;
-  --gray-150: #e8eaec;
-  --gray-200: #dde0e4;
-  --gray-300: #c1c6cc;
-  --gray-400: #9ba2ab;
-  --gray-500: #6e7580;
-  --gray-600: #4e5560;
-  --gray-700: #343b47;
-  --gray-800: #1e2530;
-  --gray-900: #0f1318;
+  --gray-50:  #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-150: #e8edf3;
+  --gray-200: #dce3ec;
+  --gray-300: #c7d3e3;
+  --gray-400: #8a99ab;
+  --gray-500: #637489;
+  --gray-600: #4a5b6e;
+  --gray-700: #33465a;
+  --gray-800: #1a2d42;
+  --gray-900: #0b1f33;
 
   /* ─── BACKGROUNDS ──────────────────────────────────────────── */
-  --bg-canvas:   #f3f6f8;
+  --bg-canvas:   #f4f7fb;
   --bg-primary:  #ffffff;
   --bg-secondary: var(--gray-50);
   --bg-tertiary:  var(--gray-100);
-  --bg-overlay:  rgba(15, 19, 24, 0.55);
+  --bg-overlay:  rgba(11, 31, 51, 0.55);
 
   /* ─── TEXT ─────────────────────────────────────────────────── */
-  --text-primary:   #0f1318;
+  --text-primary:   var(--ink);
   --text-secondary: var(--gray-600);
-  --text-tertiary:  var(--gray-400);
+  --text-tertiary:  var(--gray-500);
   --text-inverse:   #ffffff;
   --text-link:      var(--c1);
 
   /* ─── BORDERS ──────────────────────────────────────────────── */
-  --border-subtle:  rgba(15, 19, 24, 0.07);
-  --border-default: rgba(15, 19, 24, 0.12);
-  --border-strong:  rgba(15, 19, 24, 0.22);
+  --border-subtle:  #e8edf3;
+  --border-default: #dce3ec;
+  --border-strong:  #c7d3e3;
   --border-focus:   var(--c1);
 
   /* ─── TYPOGRAPHY ───────────────────────────────────────────── */
-  --font-sans:    'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-sans:    'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
 
   --text-xs:   0.6875rem;   /* 11px */
@@ -124,9 +131,9 @@
   --sp-20: 5rem;
 
   /* ─── BORDER RADII ─────────────────────────────────────────── */
-  --r-sm:   4px;
-  --r-md:   8px;
-  --r-lg:   12px;
+  --r-sm:   6px;
+  --r-md:   10px;
+  --r-lg:   14px;
   --r-xl:   16px;
   --r-2xl:  24px;
   --r-full: 9999px;
@@ -161,20 +168,20 @@
   /* Colored glow shadows */
   --shadow-primary:
     0 4px 14px var(--c1-glow),
-    0 2px 4px  rgba(29, 53, 87, 0.12);
+    0 2px 4px  rgba(29, 91, 216, 0.12);
 
   --shadow-primary-lg:
-    0 8px 28px  rgba(29, 53, 87, 0.26),
-    0 4px 10px  rgba(29, 53, 87, 0.16),
-    0 0 0 1px   rgba(29, 53, 87, 0.08);
+    0 8px 28px  rgba(29, 91, 216, 0.24),
+    0 4px 10px  rgba(29, 91, 216, 0.14),
+    0 0 0 1px   rgba(29, 91, 216, 0.08);
 
   --shadow-accent:
-    0 4px 14px var(--c3-glow),
-    0 2px 4px  rgba(231, 111, 81, 0.14);
+    0 4px 14px var(--c4-glow),
+    0 2px 4px  rgba(245, 165, 36, 0.16);
 
   --shadow-success:
     0 4px 14px var(--c2-glow),
-    0 2px 4px  rgba(42, 157, 143, 0.14);
+    0 2px 4px  rgba(18, 128, 92, 0.14);
 
   /* ─── TRANSITIONS ──────────────────────────────────────────── */
   --ease-out:     cubic-bezier(0.0, 0.0, 0.2, 1);
@@ -241,18 +248,19 @@
   --warning-light: var(--c4-pale);
   --info-light: var(--c1-pale);
 
-  --gradient-heading: linear-gradient(135deg, var(--c1) 0%, var(--c2) 45%, var(--c3) 100%);
-  --gradient-page-bg: linear-gradient(180deg, var(--gray-50) 0%, var(--bg-primary) 45%, var(--c1-pale) 100%);
-  --border-glass: rgba(29, 53, 87, 0.14);
-  --border-glass-subtle: rgba(29, 53, 87, 0.1);
-  --overlay-blob-primary: rgba(29, 53, 87, 0.06);
-  --overlay-blob-secondary: rgba(42, 157, 143, 0.06);
-  --overlay-blob-primary-strong: rgba(29, 53, 87, 0.08);
-  --overlay-blob-secondary-strong: rgba(42, 157, 143, 0.08);
-  --overlay-blob-accent-strong: rgba(231, 111, 81, 0.08);
-  --surface-glass: rgba(255, 255, 255, 0.96);
-  --surface-glass-strong: rgba(255, 255, 255, 0.99);
-  --focus-ring-primary: rgba(29, 53, 87, 0.16);
+  /* Fjord uses solid ink headings; gradient-clipped titles render as plain ink */
+  --gradient-heading: linear-gradient(var(--ink), var(--ink));
+  --gradient-page-bg: var(--bg-canvas);
+  --border-glass: var(--border-default);
+  --border-glass-subtle: var(--border-subtle);
+  --overlay-blob-primary: transparent;
+  --overlay-blob-secondary: transparent;
+  --overlay-blob-primary-strong: transparent;
+  --overlay-blob-secondary-strong: transparent;
+  --overlay-blob-accent-strong: transparent;
+  --surface-glass: #ffffff;
+  --surface-glass-strong: #ffffff;
+  --focus-ring-primary: rgba(29, 91, 216, 0.22);
 
   --transition-fast: var(--dur-fast) var(--ease-out);
 }

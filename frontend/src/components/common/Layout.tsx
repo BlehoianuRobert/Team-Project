@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { ROUTES } from '../../utils/constants';
 import ProductsMegaMenu from './ProductsMegaMenu';
+import Logo from './Logo';
 import './Layout.css';
 
 interface LayoutProps {
@@ -22,12 +23,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <nav className="app-nav app-nav-primary" aria-label="Navigare principală">
             <div className="nav-brand">
               <Link to={ROUTES.PRODUCTS}>
-                <img
-                  src="/logo-horizontal.svg"
-                  alt="Online Rental System"
-                  className="nav-brand-img"
-                  draggable={false}
-                />
+                <Logo />
               </Link>
             </div>
 
@@ -117,7 +113,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <footer className="app-footer">
         <div className="app-footer-inner">
           <Link to={ROUTES.PRODUCTS} className="app-footer-brand">
-            <img src="/logo-horizontal.svg" alt="Online Rental System" className="app-footer-logo" draggable={false} />
+            <Logo />
           </Link>
           <span className="app-footer-sep" aria-hidden>·</span>
           <p className="app-footer-flow">© 2026 Online Rental System · powered by Blehoianu-Robert Ionut</p>

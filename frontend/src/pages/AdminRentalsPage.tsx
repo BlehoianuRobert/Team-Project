@@ -280,7 +280,7 @@ const AdminRentalsPage: React.FC = () => {
                           padding: '0.25rem 0.5rem',
                           borderRadius: '0.25rem',
                           backgroundColor: rental.deliveryType === 'DELIVERY' 
-                            ? 'rgba(29, 53, 87, 0.1)' 
+                            ? 'rgba(11, 31, 51, 0.1)' 
                             : 'rgba(107, 114, 128, 0.1)',
                           color: rental.deliveryType === 'DELIVERY'
                             ? 'var(--primary)'
@@ -339,7 +339,7 @@ const AdminRentalsPage: React.FC = () => {
                           color: rental.deliveryStatus === 'DELIVERED'
                             ? '#065f46'
                             : rental.deliveryStatus === 'IN_TRANSIT'
-                            ? '#1e40af'
+                            ? '#174bb5'
                             : 'var(--text-secondary)',
                           fontWeight: 600
                         }}>

@@ -150,7 +150,7 @@
 .admin-card:hover {
   box-shadow: var(--shadow-lg);
   transform: translateY(-4px) translateX(2px);
-  border-color: rgba(29, 53, 87, 0.1);
+  border-color: rgba(11, 31, 51, 0.1);
 }
 
 .admin-card-nav .admin-card-accent { background: var(--c1); }
@@ -195,7 +195,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--c1) 0%, var(--c2) 50%, var(--c3) 100%);
+  background: var(--c1);
 }
 
 .admin-section h2 {
@@ -237,7 +237,7 @@
   font-weight: 700;
   background: var(--c4-pale);
   color: var(--c4);
-  border: 1.5px solid rgba(233, 196, 106, 0.35);
+  border: 1.5px solid rgba(245, 165, 36, 0.35);
   border-radius: var(--r-md);
   cursor: pointer;
   transition: var(--transition-base);
@@ -246,7 +246,7 @@
 .btn-promote:hover:not(:disabled) {
   background: var(--c4);
   color: white;
-  box-shadow: 0 4px 12px rgba(233, 196, 106, 0.35);
+  box-shadow: 0 4px 12px rgba(245, 165, 36, 0.35);
   transform: translateY(-1px);
 }
 
@@ -270,7 +270,7 @@
 
 .message.success {
   background: var(--c2-pale);
-  color: #004d40;
+  color: #0e6b4c;
   border-color: var(--c2);
 }
 
@@ -321,7 +321,7 @@
 }
 
 .users-table tbody tr:hover {
-  background: linear-gradient(90deg, rgba(29, 53, 87, 0.03), transparent);
+  background: linear-gradient(90deg, rgba(11, 31, 51, 0.03), transparent);
 }
 
 .users-table tbody tr:last-child {
@@ -371,7 +371,7 @@
 
 .status-badge.status-unverified {
   background: var(--c4-pale);
-  color: #8a6d2e;
+  color: #8a5a00;
 }
 
 .actions-cell {

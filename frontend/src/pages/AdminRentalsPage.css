@@ -70,7 +70,7 @@
 .status-select:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(29, 53, 87, 0.1);
+  box-shadow: 0 0 0 3px rgba(11, 31, 51, 0.1);
 }
 
 .status-select:disabled {

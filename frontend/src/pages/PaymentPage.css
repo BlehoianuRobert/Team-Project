@@ -110,7 +110,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--c1) 0%, var(--c2) 100%);
+  background: var(--c1);
 }
 
 .payment-stripe-missing {
@@ -141,7 +141,7 @@
 .payment-amount {
   text-align: center;
   padding: var(--sp-8);
-  background: linear-gradient(135deg, rgba(29, 53, 87, 0.1) 0%, rgba(42, 157, 143, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(11, 31, 51, 0.1) 0%, rgba(18, 128, 92, 0.1) 100%);
   border-radius: var(--r-lg);
   border: 2px solid var(--border-glass-subtle);
 }

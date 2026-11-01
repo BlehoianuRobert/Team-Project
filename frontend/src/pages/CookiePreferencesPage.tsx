@@ -94,7 +94,7 @@ const CookiePreferencesPage: React.FC = () => {
           {/* Analytics */}
           <div className="cookie-row">
             <div className="cookie-row-info">
-              <div className="cookie-row-icon" style={{ background: 'var(--c4-pale)', color: '#9a6e00' }}>
+              <div className="cookie-row-icon" style={{ background: 'var(--c4-pale)', color: '#8a5a00' }}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="18" y1="20" x2="18" y2="10"/>
                   <line x1="12" y1="20" x2="12" y2="4"/>

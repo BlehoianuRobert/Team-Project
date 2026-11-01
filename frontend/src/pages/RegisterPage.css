@@ -13,7 +13,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, var(--c1) 0%, #152a45 40%, #152a45 60%, var(--c2) 100%);
+  background: var(--bg-canvas);
   z-index: 0;
 }
 
@@ -23,8 +23,7 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    none;
   background-size: 48px 48px;
   z-index: 1;
   pointer-events: none;
@@ -38,8 +37,8 @@
   background: var(--bg-primary);
   border-radius: var(--r-2xl);
   padding: var(--sp-10);
-  box-shadow: var(--shadow-2xl);
-  border: 1px solid var(--border-subtle);
+  box-shadow: 0 12px 32px rgba(11, 31, 51, 0.08);
+  border: 1px solid var(--border-default);
   animation: authCardIn 0.5s var(--ease-spring);
 }
 
@@ -107,7 +106,7 @@
   padding: var(--sp-8);
   background: var(--c2-pale);
   border-radius: var(--r-xl);
-  border: 1px solid rgba(42, 157, 143, 0.3);
+  border: 1px solid rgba(18, 128, 92, 0.3);
 }
 
 .success-message h2 {

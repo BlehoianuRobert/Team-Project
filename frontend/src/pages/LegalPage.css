@@ -113,7 +113,7 @@
 .legal-section-icon--blue   { background: var(--c1-pale); color: var(--c1); }
 .legal-section-icon--teal   { background: var(--c2-pale); color: var(--c2); }
 .legal-section-icon--coral  { background: var(--c3-pale); color: var(--c3); }
-.legal-section-icon--gold   { background: var(--c4-pale); color: #9a6e00; }
+.legal-section-icon--gold   { background: var(--c4-pale); color: #8a5a00; }
 
 .legal-section-num {
   display: inline-flex;
@@ -243,7 +243,7 @@
   align-items: center;
   gap: var(--sp-4);
   background: var(--c2-pale);
-  border: 1px solid rgba(42, 157, 143, 0.18);
+  border: 1px solid rgba(18, 128, 92, 0.18);
   border-radius: var(--r-xl);
   padding: var(--sp-5) var(--sp-6);
 }

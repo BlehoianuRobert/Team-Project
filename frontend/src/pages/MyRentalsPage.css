@@ -157,7 +157,7 @@
 
 .status-confirmed {
   background-color: var(--info-light);
-  color: #1e40af;
+  color: #174bb5;
   border: 1px solid var(--info);
 }
 
@@ -199,8 +199,8 @@
 }
 
 .rental-delivery-box--delivery {
-  background: rgba(29, 53, 87, 0.06);
-  border: 1px solid rgba(29, 53, 87, 0.16);
+  background: rgba(11, 31, 51, 0.06);
+  border: 1px solid rgba(11, 31, 51, 0.16);
 }
 
 .rental-delivery-box--pickup {
@@ -241,7 +241,7 @@
 
 .rental-awb-label {
   font-size: var(--text-xs);
-  color: #004d40;
+  color: #0e6b4c;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -250,7 +250,7 @@
 .rental-awb-value {
   font-family: var(--font-mono);
   font-size: var(--text-sm);
-  color: #004d40;
+  color: #0e6b4c;
   font-weight: 700;
   letter-spacing: 0.05em;
 }
@@ -266,7 +266,7 @@
 
 .rental-delivery-status--delivered {
   background: var(--c2-pale);
-  color: #004d40;
+  color: #0e6b4c;
 }
 
 .rental-delivery-status--in_transit {
@@ -276,7 +276,7 @@
 
 .rental-delivery-status--pending {
   background: var(--c4-pale);
-  color: #6b4a0a;
+  color: #8a5a00;
 }
 
 .rental-delivery-status--returned {

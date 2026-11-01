@@ -9,8 +9,8 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 25% 25%, rgba(29, 53, 87, 0.05) 0%, transparent 40%),
-    radial-gradient(circle at 75% 75%, rgba(42, 157, 143, 0.05) 0%, transparent 40%);
+    radial-gradient(circle at 25% 25%, rgba(11, 31, 51, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 75% 75%, rgba(18, 128, 92, 0.05) 0%, transparent 40%);
   z-index: 0;
   pointer-events: none;
 }
@@ -43,13 +43,13 @@
   font-size: var(--text-sm);
   line-height: 1.55;
   color: var(--text-secondary);
-  background: var(--bg-secondary, rgba(29, 53, 87, 0.06));
+  background: var(--bg-secondary, rgba(11, 31, 51, 0.06));
   border-radius: var(--r-lg);
   border: 1px solid var(--border-subtle);
 }
 
 .rental-detail-hint a {
-  color: var(--accent-primary, #1d3557);
+  color: var(--accent-primary, #1d5bd8);
   font-weight: 600;
 }
 

@@ -21,7 +21,7 @@
 
 .products-mega-trigger {
   text-decoration: none;
-  color: #3d4f5f;
+  color: #4a5b6e;
   font-weight: 600;
   font-size: var(--text-sm);
   text-transform: none;
@@ -55,19 +55,18 @@
 }
 
 .products-mega-trigger:hover {
-  color: #0f2744;
-  background: rgba(29, 53, 87, 0.06);
+  color: #0b1f33;
+  background: rgba(11, 31, 51, 0.06);
 }
 
 .products-mega-trigger.is-route-active,
 .products-mega-trigger.active {
-  color: #0f2744;
-  background: rgba(100, 180, 246, 0.22);
-  box-shadow: inset 0 0 0 1px rgba(29, 53, 87, 0.08);
+  color: var(--c1);
+  background: var(--c1-pale);
 }
 
 .products-mega-trigger.has-filters {
-  color: #0f2744;
+  color: #0b1f33;
 }
 
 .products-mega-trigger.has-filters::before {
@@ -78,7 +77,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), var(--secondary));
+  background: var(--amber);
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.95);
 }
 
@@ -86,7 +85,7 @@
   font-family: inherit;
   cursor: pointer;
   border: none;
-  border-left: 1px solid rgba(29, 53, 87, 0.18);
+  border-left: 1px solid rgba(11, 31, 51, 0.18);
   background: rgba(255, 255, 255, 0.85);
   color: var(--text-secondary);
   font-weight: 700;
@@ -106,12 +105,12 @@
 .products-mega-filtre-btn:hover {
   color: var(--primary);
   background: #fff;
-  box-shadow: inset 0 0 0 1px rgba(29, 53, 87, 0.2);
+  box-shadow: inset 0 0 0 1px rgba(11, 31, 51, 0.2);
 }
 
 .products-mega-filtre-btn.is-open {
   color: var(--primary);
-  background: linear-gradient(135deg, rgba(29, 53, 87, 0.12) 0%, rgba(42, 157, 143, 0.1) 100%);
+  background: var(--c1-pale);
 }
 
 .products-mega-filtre-btn.has-filters:not(.is-open) {
@@ -152,7 +151,7 @@
   border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
   box-shadow:
     0 24px 48px -12px rgba(15, 23, 42, 0.18),
-    0 0 0 1px rgba(29, 53, 87, 0.08),
+    0 0 0 1px rgba(11, 31, 51, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
   border-top: 1px solid rgba(226, 232, 240, 0.9);
   animation: productsMegaSlide 0.34s cubic-bezier(0.4, 0, 0.2, 1) both;
@@ -237,7 +236,7 @@
 
 .products-mega-input:hover,
 .products-mega-select:hover {
-  border-color: rgba(29, 53, 87, 0.35);
+  border-color: rgba(11, 31, 51, 0.35);
   background: #fff;
 }
 
@@ -245,7 +244,7 @@
 .products-mega-select:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(29, 53, 87, 0.2);
+  box-shadow: 0 0 0 3px rgba(11, 31, 51, 0.2);
   background: #fff;
 }
 
@@ -266,7 +265,7 @@
 }
 
 .products-mega-options-scroll::-webkit-scrollbar-thumb {
-  background: rgba(29, 53, 87, 0.25);
+  background: rgba(11, 31, 51, 0.25);
   border-radius: 3px;
 }
 
@@ -289,10 +288,10 @@
 }
 
 .products-mega-option:hover {
-  background: linear-gradient(135deg, rgba(29, 53, 87, 0.08) 0%, rgba(42, 157, 143, 0.06) 100%);
+  background: var(--c1-pale);
   transform: translateX(4px);
-  box-shadow: 0 4px 14px rgba(29, 53, 87, 0.1);
-  border-color: rgba(29, 53, 87, 0.12);
+  box-shadow: 0 4px 14px rgba(11, 31, 51, 0.1);
+  border-color: rgba(11, 31, 51, 0.12);
 }
 
 .products-mega-option:active {
@@ -352,8 +351,8 @@
     90deg,
     rgba(226, 232, 240, 0.95) 0%,
     rgba(226, 232, 240, 0.95) var(--p1),
-    rgba(29, 53, 87, 0.45) var(--p1),
-    rgba(42, 157, 143, 0.5) var(--p2),
+    rgba(11, 31, 51, 0.45) var(--p1),
+    rgba(18, 128, 92, 0.5) var(--p2),
     rgba(226, 232, 240, 0.95) var(--p2),
     rgba(226, 240, 240, 0.95) 100%
   );
@@ -381,11 +380,11 @@
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: linear-gradient(var(--c1), var(--c1));
   cursor: grab;
   pointer-events: auto;
   box-shadow:
-    0 2px 8px rgba(29, 53, 87, 0.45),
+    0 2px 8px rgba(11, 31, 51, 0.45),
     0 0 0 2px #fff;
   transition:
     transform 0.2s ease,
@@ -395,7 +394,7 @@
 .products-mega-range::-webkit-slider-thumb:hover {
   transform: scale(1.12);
   box-shadow:
-    0 4px 14px rgba(29, 53, 87, 0.55),
+    0 4px 14px rgba(11, 31, 51, 0.55),
     0 0 0 2px #fff;
 }
 
@@ -409,11 +408,11 @@
   height: 18px;
   border: none;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: linear-gradient(var(--c1), var(--c1));
   cursor: grab;
   pointer-events: auto;
   box-shadow:
-    0 2px 8px rgba(29, 53, 87, 0.45),
+    0 2px 8px rgba(11, 31, 51, 0.45),
     0 0 0 2px #fff;
 }
 
