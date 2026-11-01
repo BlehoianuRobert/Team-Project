@@ -198,7 +198,7 @@
   background: var(--error-pale);
   border: 1px solid rgba(239, 68, 68, 0.35);
   border-radius: var(--r-md);
-  color: #991b1b;
+  color: var(--on-error-pale);
   font-size: var(--text-sm);
 }
 
@@ -240,7 +240,7 @@
 }
 
 .error-container h2 {
-  color: #991b1b;
+  color: var(--on-error-pale);
   margin-bottom: var(--sp-4);
 }
 

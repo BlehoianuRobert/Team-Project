@@ -270,13 +270,13 @@
 
 .message.success {
   background: var(--c2-pale);
-  color: #0e6b4c;
+  color: var(--on-success-pale);
   border-color: var(--c2);
 }
 
 .message.error {
   background: var(--error-pale);
-  color: #7a1f1f;
+  color: var(--on-error-pale);
   border-color: var(--error);
 }
 
@@ -371,7 +371,7 @@
 
 .status-badge.status-unverified {
   background: var(--c4-pale);
-  color: #8a5a00;
+  color: var(--on-gold-pale);
 }
 
 .actions-cell {

@@ -48,7 +48,7 @@
   font-weight: 800;
   line-height: 1.08;
   letter-spacing: -0.03em;
-  color: var(--ink);
+  color: var(--text-primary);
 }
 
 .hero-title-accent {
@@ -68,7 +68,7 @@
   flex-wrap: wrap;
   gap: var(--sp-2);
   padding: var(--sp-2);
-  background: #fff;
+  background: var(--bg-primary);
   border: 1px solid var(--border-default);
   border-radius: var(--r-lg);
   box-shadow: 0 8px 24px rgba(11, 31, 51, 0.06);
@@ -79,7 +79,7 @@
   min-width: 0;
   font: inherit;
   font-size: var(--text-base);
-  color: var(--ink);
+  color: var(--text-primary);
   background: transparent;
   border: 0;
   outline: none;
@@ -111,8 +111,8 @@
   padding: 0.875rem 1.75rem;
   font-size: 1rem;
   font-weight: 600;
-  color: var(--ink);
-  background: #fff;
+  color: var(--text-primary);
+  background: var(--bg-primary);
   border: 1px solid var(--border-strong);
   border-radius: var(--r-md);
   text-decoration: none;
@@ -121,7 +121,7 @@
 
 .btn-hero-ghost:hover {
   background: var(--bg-canvas);
-  border-color: var(--ink);
+  border-color: var(--text-primary);
 }
 
 .home-hero-visual {
@@ -156,7 +156,7 @@
   align-items: flex-start;
   gap: var(--sp-4);
   padding: var(--sp-6);
-  background: #fff;
+  background: var(--bg-primary);
   border: 1px solid var(--border-default);
   border-radius: var(--r-xl);
 }
@@ -165,7 +165,7 @@
   margin: 0 0 4px;
   font-size: 1.0625rem;
   font-weight: 700;
-  color: var(--ink);
+  color: var(--text-primary);
 }
 
 .home-feature-card p {

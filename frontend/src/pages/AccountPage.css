@@ -35,13 +35,13 @@
 
 .account-banner--ok {
   background: var(--c2-pale);
-  color: #0e6b4c;
+  color: var(--on-success-pale);
   border: 1px solid rgba(18, 128, 92, 0.35);
 }
 
 .account-banner--err {
   background: var(--error-pale);
-  color: #7a1f1f;
+  color: var(--on-error-pale);
   border: 1px solid rgba(184, 50, 50, 0.35);
 }
 

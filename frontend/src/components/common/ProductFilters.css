@@ -217,7 +217,7 @@
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid transparent;
   position: relative;
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--bg-secondary);
   font-size: var(--font-size-sm);
 }
 

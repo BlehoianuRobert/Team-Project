@@ -107,7 +107,7 @@
 .help-section-icon--blue  { background: var(--c1-pale); color: var(--c1); }
 .help-section-icon--teal  { background: var(--c2-pale); color: var(--c2); }
 .help-section-icon--coral { background: var(--c3-pale); color: var(--c3); }
-.help-section-icon--gold  { background: var(--c4-pale); color: #8a5a00; }
+.help-section-icon--gold  { background: var(--c4-pale); color: var(--on-gold-pale); }
 
 .help-section h2 {
   font-size: var(--text-lg);

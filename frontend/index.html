@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ro">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -9,6 +9,18 @@
     <!-- Served by Docker nginx: if you do not see this comment in View Source, you are not hitting this build. -->
     <meta name="ui-build" content="docker-frontend-2026-04-06" />
     <title>Online Rental System</title>
+    <script>
+      // Apply the saved light/dark theme before first paint (ThemeContext keeps it in sync afterwards).
+      (function () {
+        var t = null;
+        try { t = localStorage.getItem('theme'); } catch (e) {}
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = t;
+        document.documentElement.style.colorScheme = t;
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

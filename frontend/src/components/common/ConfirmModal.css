@@ -28,17 +28,17 @@
 
 .confirm-modal-header.danger {
   background: var(--error-light);
-  color: #991b1b;
+  color: var(--on-error-pale);
 }
 
 .confirm-modal-header.warning {
   background: var(--warning-light);
-  color: #92400e;
+  color: var(--on-gold-pale);
 }
 
 .confirm-modal-header.info {
   background: var(--info-light);
-  color: #174bb5;
+  color: var(--on-info-pale);
 }
 
 .confirm-modal-header h3 {

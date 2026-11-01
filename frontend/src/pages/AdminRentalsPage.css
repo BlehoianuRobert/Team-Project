@@ -14,7 +14,7 @@
 .rentals-table {
   background: var(--bg-primary);
   border-radius: var(--r-xl);
-  overflow: auto;
+  overflow: hidden;
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--border-subtle);
 }
@@ -22,15 +22,37 @@
 .rentals-table table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 1080px;
+  table-layout: fixed;
 }
 
 .rentals-table th,
 .rentals-table td {
-  padding: var(--sp-4) var(--sp-5);
+  padding: var(--sp-3);
   text-align: left;
   border-bottom: 1px solid var(--border-subtle);
   vertical-align: middle;
+  font-size: var(--text-sm);
+  overflow-wrap: break-word;
+}
+
+.rentals-table .renter-email {
+  overflow-wrap: anywhere;
+}
+
+/* Column widths: ID, Produs, Închiriat de, Perioadă, Preț, Depozit, Status, Stare, Livrare, Acțiuni */
+.rentals-table th:nth-child(1)  { width: 3%; }
+.rentals-table th:nth-child(2)  { width: 11%; }
+.rentals-table th:nth-child(3)  { width: 16%; }
+.rentals-table th:nth-child(4)  { width: 10%; }
+.rentals-table th:nth-child(5)  { width: 9%; }
+.rentals-table th:nth-child(6)  { width: 9%; }
+.rentals-table th:nth-child(7)  { width: 11%; }
+.rentals-table th:nth-child(8)  { width: 11%; }
+.rentals-table th:nth-child(9)  { width: 11%; }
+.rentals-table th:nth-child(10) { width: 9%; }
+
+.rentals-table td .btn {
+  white-space: normal;
 }
 
 .rentals-table th {
@@ -40,7 +62,7 @@
   font-size: var(--text-xs);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .rentals-table tr {
@@ -65,6 +87,8 @@
   color: var(--text-primary);
   font-weight: 600;
   transition: var(--transition-base);
+  width: 100%;
+  max-width: 100%;
 }
 
 .status-select:focus {
@@ -165,15 +189,78 @@
   color: var(--text-secondary);
 }
 
-@media (max-width: 768px) {
+/* Narrower screens: each rental becomes a card with labelled fields. */
+@media (max-width: 1100px) {
   .rentals-table {
-    overflow-x: auto;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    overflow: visible;
   }
-  
-  .rentals-table table {
-    min-width: 800px;
+
+  .rentals-table table,
+  .rentals-table tbody,
+  .rentals-table tr,
+  .rentals-table td {
+    display: block;
+    width: 100%;
   }
-  
+
+  .rentals-table thead {
+    display: none;
+  }
+
+  .rentals-table tr {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--r-xl);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--sp-4);
+    padding: var(--sp-2) var(--sp-4);
+  }
+
+  .rentals-table tr:hover {
+    background: var(--bg-primary);
+  }
+
+  .rentals-table td,
+  .rentals-table tr:last-child td {
+    display: grid;
+    grid-template-columns: 130px minmax(0, 1fr);
+    gap: var(--sp-3);
+    align-items: center;
+    padding: var(--sp-2) 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .rentals-table td:last-child,
+  .rentals-table tr:last-child td:last-child {
+    border-bottom: none;
+  }
+
+  .rentals-table td::before {
+    content: attr(data-label);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    color: var(--text-tertiary);
+  }
+
+  .status-select {
+    width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .rentals-table td,
+  .rentals-table tr:last-child td {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-1);
+  }
+}
+
+@media (max-width: 768px) {
   .admin-rentals-page h1 {
     font-size: var(--text-2xl);
   }

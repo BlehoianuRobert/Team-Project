@@ -83,7 +83,7 @@ a:hover { color: var(--primary-hover); }
 }
 
 .text-gradient-hero {
-  background: linear-gradient(var(--ink), var(--ink));
+  background: linear-gradient(var(--text-primary), var(--text-primary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -189,7 +189,7 @@ a:hover { color: var(--primary-hover); }
 }
 .btn-secondary:hover:not(:disabled) {
   background: var(--bg-secondary);
-  border-color: var(--ink);
+  border-color: var(--text-primary);
   box-shadow: var(--shadow-xs);
 }
 .btn-secondary:active:not(:disabled) {
@@ -409,19 +409,19 @@ a:hover { color: var(--primary-hover); }
 
 .alert-error {
   background: var(--error-pale);
-  color: #7a1f1f;
+  color: var(--on-error-pale);
   border-color: rgba(184, 50, 50, 0.25);
 }
 
 .alert-warning {
   background: var(--c4-pale);
-  color: #8a5a00;
+  color: var(--on-gold-pale);
   border-color: rgba(192, 138, 42, 0.25);
 }
 
 .alert-success {
   background: var(--c2-pale);
-  color: #0e6b4c;
+  color: var(--on-success-pale);
   border-color: rgba(18, 128, 92, 0.25);
 }
 

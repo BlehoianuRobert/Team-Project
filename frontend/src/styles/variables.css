@@ -61,6 +61,12 @@
   --info:           var(--c1);
   --info-pale:      var(--c1-pale);
 
+  /* Text that sits on the pale tints above */
+  --on-success-pale: #0e6b4c;
+  --on-error-pale:   #991b1b;
+  --on-gold-pale:    #8a5a00;
+  --on-info-pale:    #174bb5;
+
   /* ─── NEUTRALS ─────────────────────────────────────────────── */
   --gray-50:  #f8fafc;
   --gray-100: #f1f5f9;
@@ -264,3 +270,74 @@
 
   --transition-fast: var(--dur-fast) var(--ease-out);
 }
+
+/* ─── DARK THEME ───────────────────────────────────────────────────
+ * Set by ThemeContext on <html data-theme="dark">. Surfaces become deep ink and
+ * text turns light; --ink stays dark because it is also the text colour on amber.
+ */
+:root[data-theme="dark"] {
+  --c1: #1d5bd8;
+  --c1-light: #174bb5;
+  --c1-pale:  #16305a;
+  --c1-glow:  rgba(29, 91, 216, 0.3);
+
+  --c2: #179068;
+  --c2-light: #1fa57a;
+  --c2-pale:  #113a2d;
+
+  --c3: #c2620f;
+  --c3-light: #d97706;
+  --c3-pale:  #3a2a10;
+
+  --c4: #f5c062;
+  --c4-pale:  #3a2c10;
+  --amber-pale: #3a2c10;
+
+  --error:      #d64545;
+  --error-pale: #3d1b1f;
+
+  --on-success-pale: #7fdcb5;
+  --on-error-pale:   #ffb4b4;
+  --on-gold-pale:    #f5c062;
+  --on-info-pale:    #8fb0f5;
+
+  --gray-50:  #142a44;
+  --gray-100: #1a3150;
+  --gray-150: #1c3550;
+  --gray-200: #24425f;
+  --gray-300: #335a80;
+  --gray-400: #6f839b;
+  --gray-500: #8fa1b6;
+  --gray-600: #b4c2d3;
+  --gray-700: #cfdae6;
+  --gray-800: #e1e8f0;
+  --gray-900: #f1f5f9;
+
+  --bg-canvas:    #0a1726;
+  --bg-primary:   #10233a;
+  --bg-secondary: #142a44;
+  --bg-tertiary:  #1a3150;
+  --bg-overlay:   rgba(2, 8, 16, 0.72);
+
+  --text-primary:   #e8eef6;
+  --text-secondary: #b4c2d3;
+  --text-tertiary:  #8fa1b6;
+  --text-link:      #6f9bf0;
+
+  --border-subtle:  #1c3550;
+  --border-default: #24425f;
+  --border-strong:  #335a80;
+
+  --gradient-heading: linear-gradient(var(--text-primary), var(--text-primary));
+  --surface-glass: var(--bg-primary);
+  --surface-glass-strong: var(--bg-primary);
+  --focus-ring-primary: rgba(141, 179, 255, 0.35);
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.03);
+  --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  --shadow-xl: 0 24px 48px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  --shadow-2xl: 0 40px 80px rgba(0, 0, 0, 0.5);
+}
+

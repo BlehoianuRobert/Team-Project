@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
+import { ThemeProvider } from './context/ThemeContext';
 import { ProtectedRoute } from './components/common/ProtectedRoute';
 import Layout from './components/common/Layout';
 import { ROUTES } from './utils/constants';
@@ -30,6 +31,7 @@ import './App.css';
 
 function App() {
   return (
+    <ThemeProvider>
     <AuthProvider>
       <Router>
         <Layout>
@@ -145,6 +147,7 @@ function App() {
         <ChatWidget />
       </Router>
     </AuthProvider>
+    </ThemeProvider>
   );
 }
 

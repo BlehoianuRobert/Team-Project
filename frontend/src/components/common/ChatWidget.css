@@ -34,7 +34,7 @@
   z-index: 9999;
   width: 380px;
   max-height: 520px;
-  background: #fff;
+  background: var(--bg-primary);
   border-radius: 16px;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
   display: flex;
@@ -115,8 +115,8 @@
 }
 .chat-msg--assistant {
   align-self: flex-start;
-  background: #f1f5f9;
-  color: #0b1f33;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
   border-bottom-left-radius: 4px;
 }
 .chat-msg--system {
@@ -189,7 +189,7 @@
   gap: 8px;
   padding: 12px 16px;
   border-top: 1px solid #e2e8f0;
-  background: #fafbfc;
+  background: var(--bg-secondary);
   flex-shrink: 0;
 }
 .chat-input {

@@ -240,8 +240,8 @@
 }
 
 .product-pill-category {
-  background: #dbeafe;
-  color: #0b1f33;
+  background: var(--c1-pale);
+  color: var(--on-info-pale);
   text-transform: capitalize;
 }
 
@@ -252,11 +252,11 @@
 
 .product-pill-brand--t0 {
   background: #d1fae5;
-  color: #065f46;
+  color: var(--on-success-pale);
 }
 .product-pill-brand--t1 {
   background: #ffedd5;
-  color: #9a3412;
+  color: var(--on-gold-pale);
 }
 .product-pill-brand--t2 {
   background: #e0e7ff;
@@ -266,6 +266,12 @@
   background: #fce7f3;
   color: #9d174d;
 }
+
+[data-theme="dark"] .product-pill-brand--t0 { background: #113a2d; color: #7fdcb5; }
+[data-theme="dark"] .product-pill-brand--t1 { background: #3a2c10; color: #f5c062; }
+[data-theme="dark"] .product-pill-brand--t2 { background: #23264f; color: #b9bcff; }
+[data-theme="dark"] .product-pill-brand--t3 { background: #3b1830; color: #f9a8d4; }
+[data-theme="dark"] .product-card--catalog .product-price-amount { color: var(--text-link); }
 
 .product-card--catalog .product-info h3 {
   font-size: 1.0625rem;
@@ -576,7 +582,7 @@
   background: var(--error-pale);
   border: 1px solid rgba(184, 50, 50, 0.2);
   border-radius: var(--r-xl);
-  color: #7a1f1f;
+  color: var(--on-error-pale);
   font-weight: 600;
   text-align: center;
 }

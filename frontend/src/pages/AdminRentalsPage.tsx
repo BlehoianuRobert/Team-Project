@@ -183,16 +183,16 @@ const AdminRentalsPage: React.FC = () => {
             <tbody>
               {rentals.map((rental) => (
                 <tr key={rental.id}>
-                  <td>{rental.id}</td>
-                  <td>{rental.productName || rental.inventoryUnit?.product?.name || 'N/A'}</td>
-                  <td>
+                  <td data-label="ID">{rental.id}</td>
+                  <td data-label="Produs">{rental.productName || rental.inventoryUnit?.product?.name || 'N/A'}</td>
+                  <td data-label="Închiriat de">
                     {rental.renterName ? (
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
                         <span style={{ fontWeight: '500' }}>{rental.renterName}</span>
                         <span style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
                           @{rental.renterUsername}
                         </span>
-                        <span style={{ fontSize: '0.75rem', color: 'var(--text-tertiary)' }}>
+                        <span className="renter-email" style={{ fontSize: '0.75rem', color: 'var(--text-tertiary)' }}>
                           {rental.renterEmail}
                         </span>
                       </div>
@@ -200,11 +200,11 @@ const AdminRentalsPage: React.FC = () => {
                       <span style={{ color: 'var(--text-tertiary)' }}>N/A</span>
                     )}
                   </td>
-                  <td>
+                  <td data-label="Perioadă">
                     {formatDate(rental.startDate)} - {formatDate(rental.endDate)}
                   </td>
-                  <td>{formatCurrency(rental.totalPrice)}</td>
-                  <td>
+                  <td data-label="Preț Total">{formatCurrency(rental.totalPrice)}</td>
+                  <td data-label="Depozit">
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
                       <span>{formatCurrency(rental.depositAmount)}</span>
                       {rental.depositReturned ? (
@@ -216,7 +216,7 @@ const AdminRentalsPage: React.FC = () => {
                       )}
                     </div>
                   </td>
-                  <td>
+                  <td data-label="Status">
                     <select
                       className="status-select"
                       value={rental.status}
@@ -230,7 +230,7 @@ const AdminRentalsPage: React.FC = () => {
                       ))}
                     </select>
                   </td>
-                  <td>
+                  <td data-label="Stare Produs">
                     {(rental.returnRequested || (rental.status === 'RETURNED' && rental.itemCondition === 'PENDING_CHECK')) ? (
                       <button
                         className="btn btn-primary btn-sm"
@@ -251,9 +251,9 @@ const AdminRentalsPage: React.FC = () => {
                             ? 'var(--error-light)'
                             : 'var(--bg-tertiary)',
                           color: rental.itemCondition === 'GOOD'
-                            ? '#065f46'
+                            ? 'var(--on-success-pale)'
                             : rental.itemCondition === 'DAMAGED'
-                            ? '#991b1b'
+                            ? 'var(--on-error-pale)'
                             : 'var(--text-secondary)'
                         }}>
                           {getConditionLabel(rental.itemCondition)}
@@ -271,7 +271,7 @@ const AdminRentalsPage: React.FC = () => {
                       </div>
                     )}
                   </td>
-                  <td>
+                  <td data-label="Livrare">
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                       {/* Delivery Type */}
                       {rental.deliveryType && (
@@ -300,7 +300,7 @@ const AdminRentalsPage: React.FC = () => {
                               padding: '0.5rem',
                               borderRadius: '0.25rem',
                               backgroundColor: 'var(--success-light)',
-                              color: '#065f46',
+                              color: 'var(--on-success-pale)',
                               fontWeight: 700,
                               border: '2px solid var(--success)',
                               display: 'flex',
@@ -337,9 +337,9 @@ const AdminRentalsPage: React.FC = () => {
                             ? 'var(--info-light)'
                             : 'var(--bg-tertiary)',
                           color: rental.deliveryStatus === 'DELIVERED'
-                            ? '#065f46'
+                            ? 'var(--on-success-pale)'
                             : rental.deliveryStatus === 'IN_TRANSIT'
-                            ? '#174bb5'
+                            ? 'var(--on-info-pale)'
                             : 'var(--text-secondary)',
                           fontWeight: 600
                         }}>
@@ -351,7 +351,7 @@ const AdminRentalsPage: React.FC = () => {
                       )}
                     </div>
                   </td>
-                  <td>
+                  <td data-label="Acțiuni">
                     <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                       {rental.returnRequested && (
                         <button

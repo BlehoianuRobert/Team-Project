@@ -16,7 +16,7 @@
   font-weight: 800;
   font-size: 1.375rem;
   letter-spacing: -0.03em;
-  color: var(--ink);
+  color: var(--text-primary);
   white-space: nowrap;
 }
 
@@ -37,6 +37,7 @@
   color: #ffffff;
 }
 
+[data-theme="dark"] .brand-logo-word-accent,
 .brand-logo--dark .brand-logo-word-accent {
   color: #8db3ff;
 }
