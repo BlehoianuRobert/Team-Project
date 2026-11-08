@@ -94,13 +94,13 @@ const PaymentForm: React.FC<{ rentalId: number; amount: number; clientSecret: st
     style: {
       base: {
         fontSize: '16px',
-        color: '#424770',
+        color: '#ffffff',
         '::placeholder': {
-          color: '#aab7c4',
+          color: 'rgba(255, 255, 255, 0.7)',
         },
       },
       invalid: {
-        color: '#9e2146',
+        color: '#ffd1d1',
       },
     },
   };
@@ -122,12 +122,21 @@ const PaymentForm: React.FC<{ rentalId: number; amount: number; clientSecret: st
         <div className="amount-display">{formatCurrency(amount)}</div>
       </div>
 
-      <div className="card-element-container">
-        <label>Detalii card</label>
-        <CardElement options={cardElementOptions} />
-      </div>
+      <section className="card-element-container payment-card" aria-label="Secure card payment">
+        <div className="payment-card__header" aria-hidden="true">
+          <span className="payment-card__type">Card payment</span>
+          <span className="payment-card__chip" />
+        </div>
+        <label htmlFor="payment-card-element">Detalii card</label>
+        <div id="payment-card-element" className="payment-card__element">
+          <CardElement options={cardElementOptions} />
+        </div>
+        <div className="payment-card__footer" aria-hidden="true">
+          <span className="payment-card__security-note">Secure payment</span>
+        </div>
+      </section>
 
-      {error && <div className="error-message">{error}</div>}
+      {error && <div className="error-message" role="alert">{error}</div>}
 
       <button
         type="submit"
