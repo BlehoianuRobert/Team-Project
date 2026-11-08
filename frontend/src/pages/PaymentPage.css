@@ -168,29 +168,91 @@
   gap: var(--sp-2);
 }
 
-.card-element-container label {
-  font-weight: 600;
-  color: var(--text-primary);
-  font-size: var(--text-sm);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+/* Scoped floating card styling; no global body/layout rules. */
+.payment-card {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 420px;
+  min-height: 220px;
+  align-self: center;
+  justify-content: space-between;
+  padding: 24px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 1px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card-element-container .StripeElement {
-  padding: var(--sp-4);
-  border: 2px solid var(--border-default);
+.payment-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.payment-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.payment-card__type {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.payment-card__chip {
+  width: 40px;
+  height: 30px;
+  flex: 0 0 auto;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #d4af37 0%, #aa771c 100%);
+}
+
+.payment-card label {
+  display: block;
+  color: #fff;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.payment-card__element {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 14px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
   border-radius: var(--r-md);
-  background: var(--bg-primary);
+  background: rgba(255, 255, 255, 0.1);
   transition: border-color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
 }
 
-.card-element-container .StripeElement--focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 4px var(--focus-ring-primary);
+.payment-card__element .StripeElement {
+  width: 100%;
 }
 
-.card-element-container .StripeElement--invalid {
-  border-color: var(--error);
+.payment-card__element:focus-within {
+  border-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+}
+
+.payment-card__footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.payment-card__security-note {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  opacity: 0.8;
+  text-transform: uppercase;
 }
 
 .payment-page .error-message {
@@ -246,6 +308,31 @@
 
 .error-container p {
   color: var(--text-secondary);
+}
+
+@media (max-width: 480px) {
+  .payment-container {
+    padding: var(--sp-4);
+  }
+
+  .payment-card {
+    min-height: 210px;
+    padding: 20px;
+  }
+
+  .payment-card__type {
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .payment-card {
+    transition: none;
+  }
+
+  .payment-card:hover {
+    transform: none;
+  }
 }
 
 /* Submit uses global .btn.btn-primary.btn-large from App.css */
